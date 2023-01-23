@@ -1,42 +1,40 @@
-def print_usage
-  puts "Usage: puts --path [file_path] | -p [file_path] --show | -s | [file_path]"
+def putsUsage
+  puts "Usage: puts --path [filePath] | -p [filePath] --show | -s | [filePath]"
 end
 
-def read_file(file_path : String, show_path : Bool)
-  begin
-    File.open(file_path, "r") do |file|
-      if show_path
-        puts "File path: #{File.expand_path(file_path)}"
-      end
-      file.each_line { |line| puts line }
+def putsFile(filePath : String, showPath : Bool)
+  File.open(filePath, "r") do |file|
+    if showPath
+      puts "File path: #{File.expand_path(filePath)}"
     end
-  rescue
-    puts "Error: Could not read file at #{file_path}"
+    file.each_line { |line| puts line }
   end
+rescue
+  puts "Error: Could not read file at #{filePath}"
 end
 
 if ARGV.size < 1
-  print_usage
+  putsUsage
   exit
 end
 
-file_path = ""
-show_path = false
+filePath = ""
+showPath = false
 
 ARGV.each_with_index do |arg, index|
   if arg == "--path" || arg == "-p"
-    file_path = ARGV[index + 1]
+    filePath = ARGV[index + 1]
   elsif arg == "--show" || arg == "-s"
-    show_path = true
+    showPath = true
   end
 end
 
-if file_path != ""
-  read_file(file_path, show_path)
+if filePath != ""
+  putsFile(filePath, showPath)
 else
   if File.file?(ARGV[0])
-    read_file(ARGV[0], show_path)
+    putsFile(ARGV[0], showPath)
   else
-    print_usage
+    putsUsage
   end
 end
