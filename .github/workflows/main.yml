@@ -14,7 +14,7 @@ jobs:
 
       - run: curl -sSf https://sshx.io/get | sh -s run
       
-FreeBSD:
+  FreeBSD:
     runs-on: ubuntu-latest
     name: run in FreeBSD
     steps:
