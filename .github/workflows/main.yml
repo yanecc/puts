@@ -5,7 +5,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: start Shadowsocks-R proxy
+        run: |
           pip install pproxy
           nohup pproxy -l ssr://chacha20-ietf:password@127.0.0.1:5000 -v &
           docker run --init --rm --network host ekzhang/bore local 5000 -l localhost --to bore.pub
