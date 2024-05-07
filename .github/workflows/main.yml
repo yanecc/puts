@@ -13,17 +13,79 @@ jobs:
       # ... other steps ...
 
       - run: curl -sSf https://sshx.io/get | sh -s run
-  openBSD:
+      
+FreeBSD:
     runs-on: ubuntu-latest
-    name: run in OpenBSD
+    name: run in FreeBSD
     steps:
-    - name: Test in OpenBSD
+    - name: Test in FreeBSD
       id: test
-      uses: vmactions/openbsd-vm@v1
+      uses: vmactions/freebsd-vm@v1
       with:
         usesh: true
         prepare: |
-          pkg_add curl
+          pkg install -y curl
+
+        run: |
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          tar -xvzf bsd.tgz
+          file ./mockgpt
+          chmod +x ./mockgpt
+          ./mockgpt
+
+  DragonflyBSD:
+    runs-on: ubuntu-latest
+    name: run in DragonflyBSD
+    steps:
+    - name: Test in DragonflyBSD
+      id: test
+      uses: vmactions/dragonflybsd-vm@v1
+      with:
+        usesh: true
+        prepare: |
+          pkg install -y curl
+
+        run: |
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          tar -xvzf bsd.tgz
+          file ./mockgpt
+          chmod +x ./mockgpt
+          ./mockgpt
+
+  netBSD:
+    runs-on: ubuntu-latest
+    name: run in NetBSD
+    steps:
+    - name: Test in NetBSD
+      id: test
+      uses: vmactions/netbsd-vm@v1
+      with:
+        usesh: true
+        prepare: |
+          /usr/sbin/pkg_add curl
+
+        run: |
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          tar -xvzf bsd.tgz
+          file ./mockgpt
+          chmod +x ./mockgpt
+          ./mockgpt
+          
+  Solaris:
+    runs-on: ubuntu-latest
+    name: run in Solaris
+    env:
+      MYTOKEN : ${{ secrets.MYTOKEN }}
+      MYTOKEN2: "value2"
+    steps:
+    - name: Test in Solaris
+      id: test
+      uses: vmactions/solaris-vm@v1
+      with:
+        envs: 'MYTOKEN MYTOKEN2'
+        usesh: true
+        prepare: |
+          pkgutil -y -i curl
 
         run: |
           curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
