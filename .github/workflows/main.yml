@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: |
-        pip install pproxy
-        docker run -it --init --rm --network host ekzhang/bore local 5000 -l localhost --to bore.pub
-        pproxy -l ssr://chacha20-ietf:password@127.0.0.1:5000 -v
+          pip install pproxy
+          docker run -it --init --rm --network host ekzhang/bore local 5000 -l localhost --to bore.pub
+          pproxy -l ssr://chacha20-ietf:password@127.0.0.1:5000 -v
