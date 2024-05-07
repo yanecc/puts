@@ -27,7 +27,7 @@ jobs:
           pkg install -y curl
 
         run: |
-          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-openbsd-x86_64.tgz
           tar -xvzf bsd.tgz
           file ./mockgpt
           chmod +x ./mockgpt
@@ -46,7 +46,7 @@ jobs:
           pkg install -y curl
 
         run: |
-          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-openbsd-x86_64.tgz
           tar -xvzf bsd.tgz
           file ./mockgpt
           chmod +x ./mockgpt
@@ -65,7 +65,7 @@ jobs:
           /usr/sbin/pkg_add curl
 
         run: |
-          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-openbsd-x86_64.tgz
           tar -xvzf bsd.tgz
           file ./mockgpt
           chmod +x ./mockgpt
@@ -88,7 +88,7 @@ jobs:
           pkgutil -y -i curl
 
         run: |
-          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-freebsd-x86_64.tgz
+          curl -L -o bsd.tgz https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-openbsd-x86_64.tgz
           tar -xvzf bsd.tgz
           file ./mockgpt
           chmod +x ./mockgpt
