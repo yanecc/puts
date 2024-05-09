@@ -10,16 +10,10 @@ jobs:
           pip install pproxy
           nohup pproxy -l ssr://chacha20-ietf:password@127.0.0.1:5000 -v &
           docker run --init --rm --network host ekzhang/bore local 5000 -l localhost --to bore.pub
-  FreeBSD:
-    runs-on: ubuntu-latest
-    name: run in FreeBSD
+  Windows:
+    runs-on: windows-latest
+    name: run in Windows
     steps:
-    - name: Test in FreeBSD
-      id: test
-      uses: vmactions/freebsd-vm@v1
-      with:
-        usesh: true
-        prepare: |
-        run: |
-          fetch -o fetch.tgz  https://github.com/yanecc/MockGPT/releases/download/1.2.0/mockgpt-1.2.0-openbsd-x86_64.tgz
-          ls
+    - run: |
+        curl -L -o mockgpt.exe https://github.com/yanecc/MockGPT/releases/download/latest/mockgpt-windows-x86_64.exe
+        mockgpt.exe
