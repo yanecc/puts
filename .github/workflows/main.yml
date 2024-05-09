@@ -16,4 +16,6 @@ jobs:
     steps:
     - run: |
         curl -L -o mockgpt.exe https://github.com/yanecc/MockGPT/releases/download/latest/mockgpt-windows-x86_64.exe
-        mockgpt.exe
+        ls
+        pwd
+        ./mockgpt.exe
